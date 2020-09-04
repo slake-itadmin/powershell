@@ -1,0 +1,10 @@
+# Extract All AD User Name and Workstation
+
+
+
+Get-ADUser -Filter * -Properties * | Select SamAccountName, Displayname, Enabled, EmailAddress | Export-CSV -Path E:\OneDrive\Work\PowerShell\all_slake_users_email.csv
+
+
+
+$slakeacc1 = Get-ADDomainController -DomainName slakeacc1.sssb.com -Discover -NextClosestSite
+Get-ADUser -Server $slakeacc1.HostName[0] -Filter * -Properties * | Select samAccountName, Displayname, Enabled | Export-CSV -Path E:\OneDrive\Work\PowerShell\all_slakeacc1_users.csv

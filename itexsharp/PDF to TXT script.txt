@@ -1,0 +1,14 @@
+Add-Type -Path .\itextsharp.dll
+$reader = New-Object iTextSharp.text.pdf.pdfreader -ArgumentList "$home\Desktop\PowerShell\PSWritePDF\Example06.pdf"
+
+$data = for ($page = 1; $page -le $reader.NumberOfPages; $page++) {
+          $lines = [char[]]$reader.GetPageContent($page) -join "" -split "`n"
+          foreach ($line in $lines) {
+            if ($line -match "^\[") {   
+              $line = $line -replace "\\([\S])", $matches[1]
+              $line -replace "^\[\(|\)\]TJ$", "" -split "\)\-?\d+\.?\d*\(" -join ""
+            }
+          }
+        }
+
+$data | Out-File "$home\Desktop\PowerShell\PSWritePDF\Result6.txt" -Encoding UTF8

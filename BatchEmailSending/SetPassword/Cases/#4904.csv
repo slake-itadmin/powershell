@@ -1,0 +1,3 @@
+#TYPE Selected.Microsoft.ActiveDirectory.Management.ADUser,,,
+"SamAccountName","DisplayName","EmailAddress","Password"
+"SDWCTSENG","Christopher Tseng Wen Chao","christseng@silverlakeaxis.com","x7&wce!k"

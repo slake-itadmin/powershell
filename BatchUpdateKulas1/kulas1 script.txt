@@ -1,0 +1,27 @@
+#Set up ODBC connection
+$IBM_DBString = 'DSN=KULAS1;Uid=Edmund;Pwd=ecpn$735472753'
+$IBM_DBConnection = New-Object System.Data.Odbc.OdbcConnection
+$IBM_DBConnection.ConnectionString = $IBM_DBString
+$IBM_DBConnection.Open()
+$IBM_DBCommand = New-Object System.Data.Odbc.OdbcCommand
+$IBM_DBCommand.Connection = $IBM_DBConnection
+
+#Extract PC Hardware
+$IBM_SelectStatement = "SELECT * FROM SYSDATP.PCHDW LIMIT 100000"
+$IBM_DBCommand.CommandText = $IBM_SelectStatement
+$IBM_DBResult = $IBM_DBCommand.ExecuteReader()
+$IBM_UserTable = New-Object System.Data.Datatable
+$IBM_UserTable.Load($IBM_DBResult)
+$DataTablePCHDW = $IBM_UserTable
+
+#Extract PC Users
+$IBM_SelectStatement = "SELECT * FROM SYSDATP.PCUSR LIMIT 100000"
+$IBM_DBCommand.CommandText = $IBM_SelectStatement
+$IBM_DBResult = $IBM_DBCommand.ExecuteReader()
+$IBM_UserTable = New-Object System.Data.Datatable
+$IBM_UserTable.Load($IBM_DBResult)
+$DataTablePCUSR = $IBM_UserTable
+
+$IBM_DBConnection.Close()
+$DataTablePCHDW     | ConvertTo-Csv > C:\Users\PNCHIU\OneDrive\Work\BatchUpdateKulas1\SYSDATP.PCHDW.csv
+$DataTablePCUSR     | ConvertTo-Csv -NoTypeInformation > C:\Users\PNCHIU\OneDrive\Work\BatchUpdateKulas1\SYSDATP.PCUSR.csv

@@ -1,0 +1,3 @@
+#TYPE Selected.Microsoft.ActiveDirectory.Management.ADUser,,,
+"SamAccountName","DisplayName","EmailAddress","Password"
+"brkader","Kader Ibrahim bin Amirali","kader.amirali@silverglobe.com ","c<>85;ka"

@@ -1,0 +1,63 @@
+ 
+
+= SANGFOR
+
+SERVICE CONFIRMATION LETTER
+
+21 February 2020
+(For PO: 202002210019)
+Dear Silverlake Sprint Sdn Bhd.
+Thank you for purchasing SANGFOR NGAF Series, a completo Secure Web and Next Generation Firewall
+solution for your business.
+
+This service confirmation letter gives you the right to use the service stated as below for your purchased product
+Model: M5300-F-1
+
+1. Software License
+
+SN: 5031504164
+
+ID: 60511230
+
+URUApp Signature Database: 4M4G85RTSAETXTOT
+Software Upgrade: E9RAXGWCCCB2QT3F
+
+Security Database: 716GZ8NTN384Q4M0
+
+Anti-virus Database: PI159U01S8J4IONF
+
+Expiry Date: 21 Feb 2021
+
+2. Hardware and Software Service
+RTF: Return To Factory (5 Business days ship after receipt)
+
+Expiry Date: 21 Feb 2021
+
+3. Technical Support Service
+
+24°7 Technical Support (Phone, Remote support)
+8°65 Live Chat Support (Community)
+
+International Service Centre: +60 12711 7129 (7511)
+Malaysia: 1700 81 7071
+
+Hong Kong: +852 81257201
+
+Singapore: +65 3152 9370
+
+Email: tech.support@sangfor.com
+
+Community: community. sangfor.com
+
+Yours Sincerely,
+SANGFOR Technologies
+
+Your Future-Proof IT Enabler
+
+Sangfor Technologies
+Block At, Nanshan Park No.1001 Xueyuan Road, Nanshan District, Shenzlien, Guangdong Province, P.R. China (518055)
+
+E.: sales@sangfor.com |W. wivw.sangfor.com
+
+ 
+

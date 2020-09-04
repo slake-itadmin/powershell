@@ -1,0 +1,3 @@
+#TYPE Selected.Microsoft.ActiveDirectory.Management.ADUser,,,
+"SamAccountName","DisplayName","EmailAddress","Password"
+"Svwafi","Ahmad Wafi Bin Musanif","wafimusanif@silverglobe.com","`af#dJ92"

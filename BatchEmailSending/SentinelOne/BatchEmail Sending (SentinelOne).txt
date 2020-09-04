@@ -1,0 +1,31 @@
+Import-CSV "C:\Users\PNCHIU\OneDrive\PowerShell\BatchEmailSending\SentinelOne\Status\Digital\SDINX-3.csv" | ForEach-Object { 
+$EmailTo = $_.EMAIL
+$UserName = $_.RESOURCE_NAME
+$PSEmailServer = "172.16.1.21"
+$SMTPPort = "587"
+$MailFrom = "PC Support <pcsupport@silverglobe.com>"
+$credential = Import-CliXml -Path "C:\pcsupport.txt"
+$MailTo = $EmailTo
+$MailSubject = "SentinelOne Antivirus Software Installation Guide"
+$Attachment = "C:\Guide\HOWTO-Install SentinelOne (Mac).pdf", "C:\Guide\HOWTO-Install SentinelOne (Windows).pdf"
+$MailBody =
+"<div style='font-family: Calibri, sans-serif;'>
+	<p>Hi $UserName,</p>
+	<p>
+		Please follow the attached guide to install the SentinelOne antivirus.<br><br>
+Here is the SentinelOne Token :<br> eyJ1cmwiOiAiaHR0cHM6Ly9hcG5lMS0xMDAxLnNlbnRpbmVsb25lLm5ldCIsICJzaXRlX2tleSI6ICIxOWFkNjJjY2I1YzUyODc0In0=
+<br><br>Please install it before <b>11 June 2020</b>.
+<br>
+</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style='font-size: 10pt; font-family: Arial, sans-serif;'>
+		Thanks.<br><br>Regards,<br><br>PC Support<br>System Department<br>Silverlake Group of Companies<br>Level 2A KPMG Tower,<br>First Avenue, Bandar Utama,<br>
+47800 Petaling Jaya,<br>Selangor Darul Ehsan, Malaysia.
+	</p>
+</div>
+<br></br></br>"
+
+Send-MailMessage -From $MailFrom -To $MailTo -Subject $MailSubject -Body $MailBody  -Port $SMTPPort -Credential $Credential -BodyAsHTML -Attachments $Attachment -DeliveryNotificationOption 'OnFailure','Delay'
+}

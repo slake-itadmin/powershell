@@ -1,0 +1,41 @@
+﻿samAccountName,Displayname,Enabled,EmailAddress
+admtuser,admtuser,TRUE,#N/A
+admtuser2,admtuser2,TRUE,#N/A
+azira,Azira Binti Azman,TRUE,#N/A
+ANGIE,Cheah Cheng Sin,TRUE,#N/A
+cltan-admin,cltan1-admin,TRUE,#N/A
+FAKHRUL,Fakhrul Anwar A.Rahim,TRUE,#N/A
+fortinet,fortinet,TRUE,#N/A
+geeta,Geeta Palasupramaniam,TRUE,#N/A
+KVHO,Ho Ken Vin,TRUE,#N/A
+tmho,HO TET MIN,TRUE,#N/A
+hssiet-admin,hssiet-admin,TRUE,#N/A
+IUSR_SLAKEACC,Internet Guest Account,TRUE,#N/A
+IUSR_ACCBDC,Internet Guest Account,TRUE,#N/A
+flchew,Karen Chew Foong Ling,TRUE,#N/A
+slko,KO SHEER LI,TRUE,#N/A
+kwyap-admin,kwyap-admin,TRUE,#N/A
+SLLAI,LAI SU LEE,TRUE,#N/A
+TSLAU,LAU TECK SENG,TRUE,#N/A
+LINA,Lina Farina Binti Ridwan Shah,TRUE,#N/A
+WCLOH,LOH WEN CHUI,TRUE,#N/A
+farhan,MUHAMAD FARHAN BIN NORDIN,TRUE,#N/A
+NOR,Nor Syuhada Dalila,TRUE,#N/A
+NORKE,Norkesumawati Binti Ruslan,TRUE,#N/A
+ARINA,NUR ARINA BINTI MD ALI,TRUE,#N/A
+ATHIRAH,Nur Athirah Binti MD Esa,TRUE,#N/A
+NAZEHA,NUR NAZEHA BINTI MD BADRON,TRUE,#N/A
+PETER,Peter Chin Li Wai,TRUE,#N/A
+shseo,Seo Siew Hoon,TRUE,#N/A
+SLAKE_VLAN2,SLAKE_VLAN2,TRUE,#N/A
+SUJADAH,Sujadah Ananthan,TRUE,#N/A
+Sunil.acc1,Sunil Raman acc1,TRUE,#N/A
+sysbkp,System Backup Account,TRUE,#N/A
+testing,Testing,TRUE,#N/A
+vbscript,vbscript,TRUE,#N/A
+IWAM_ACCBDC,Web Application Manager account,TRUE,#N/A
+YPLIM,Yee Ping,TRUE,#N/A
+zanariah,Zanariah Binti Jaafar,TRUE,#N/A
+ZHLER-ADMIN,ZHLER-ADMIN,TRUE,#N/A
+adminl0,,TRUE,#N/A
+SLAKE$,,TRUE,#N/A

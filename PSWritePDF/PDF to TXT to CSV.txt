@@ -1,0 +1,105 @@
+#Import-Module .\PSWritePDF.psd1 -Force
+
+# Get all pages text
+Convert-PDFToText -FilePath "$home\Desktop\PowerShell\PSWritePDF\Example05.pdf" -Page 2 | Out-File -FilePath "$home\Desktop\PowerShell\PSWritePDF\E5.txt"
+
+# Get page 1 text only
+Convert-PDFToText -FilePath "$home\Desktop\PSWritePDF\Example04.pdf" -Page 2
+
+---------------------------------------------------------------------------------
+
+$Data = (Get-Content $home\Desktop\PSWritePDF\E6.txt -Raw) -split "(\[[^[]+)" | ?{![string]::IsNullOrWhiteSpace($_)}
+$Records = $Data -replace '\\','\\'|%{$Record="email: "+$_.trim()|ConvertFrom-StringData;New-Object PSObject -Prop $Record}
+$Props = $Records|%{$_.psobject.properties.name}|select -Unique
+$Props | Where{$_ -notin $Records[0].PSObject.Properties.Name}|%{Add-Member -InputObject $Records[0] -NotepropertyName $_ -NotepropertyValue $Null}
+$Records|Export-CSV $home\desktop\PSWritePDF\R6.csv -notype
+
+---------------------------------------------------------------------------------
+
+$objFSO = New-Object -ComObject Scripting.FileSystemObject
+$textFile = $objFSO.OpenTextFile("$home\Desktop\PSWritePDF\E4.txt", 1, $false)
+$textFile.ReadAll() -match "Transaction Type:\s+(.*)"
+$textFile.Close()
+$Matches
+
+---------------------------------------------------------------------------------
+
+$FileList = Get-ChildItem -Path $home\Desktop\PSWritePDF\File\ -Filter *.txt
+
+$Results = foreach ($File in $FileList) {
+    $Content = Get-Content -Path $File.FullName -Raw
+    
+    # A bit ugly, but the replaces were used to clean it up for ConvertFrom-StringData
+    $Data = $Content -replace ':\s','=' -replace '\s{11}',',' -replace '\\','\\' | ConvertFrom-StringData
+
+    # Build the output object with the string data
+    [PSCustomObject]@{
+        PolicyName = $Data.'Policy Name'
+        Include    = $Data.Include
+    }
+}
+
+$Results | Export-Csv -Path $home\Desktop\PSWritePDF\result1.csv -NoTypeInformation
+
+---------------------------------------------------------------------------------
+
+$fileList = Get-ChildItem $home\Desktop\PSWritePDF\File -filter *.txt
+
+$results = foreach ($file in $fileList) {
+    $fileContent = Get-Content $file.FullName -Raw
+    [PSCustomObject]@{
+        PolicyName = [Regex]::Match($fileContent, '(?<=Policy Name:\s*).+').value.Trim()
+        Include = ([Regex]::Match($fileContent, '(?s)(?<=Include:).+(?=Schedule:)').value.split([System.Environment]::NewLine)).Trim().Where({$_}) -join ','
+    } 
+}
+$results | Export-CSV $home\Desktop\PSWritePDF\result.csv -NoTypeInformation
+
+---------------------------------------------------------------------------------
+
+$FileList = Get-ChildItem -LiteralPath $home\Desktop\PSWritePDF\File -Filter *.txt
+
+$Results = foreach ($FL_Item in $FileList)
+    {
+    $FLI_Content = Get-Content -LiteralPath $FL_Item.FullName -Raw
+    $PolicyName = (($FLI_Content -split 'Policy Name:')[-1] -split 'Policy Type:')[0].Trim()
+    $IncludeList = @(((($FLI_Content -split 'Include:')[-1] -split 'Schedule:')[0] -split
+        [environment]::NewLine).Trim()).
+        # this gets rid of blank items
+        Where({$_})
+
+    [PSCustomObject]@{
+        PolicyName = $PolicyName
+        Include = $IncludeList -join '; '
+        }
+    }
+
+$Results
+
+$Results |
+    Export-Csv -LiteralPath "$home\Desktop\PSWritePDF\Report.csv" -NoTypeInformation
+---------------------------------------------------------------------------------
+
+$FileList = Get-ChildItem -LiteralPath $home\Desktop\PowerShell\PSWritePDF\File -Filter *.txt
+
+$Results = foreach ($FL_Item in $FileList)
+    {
+    $FLI_Content = Get-Content -LiteralPath $FL_Item.FullName -Raw
+    $Email = (($FLI_Content -split 'Email:')[-1] -split 'Follow NFS Mounts:')[0].Trim()
+    $Email1 = @(((($FLI_Content -split 'Email:')[-1] -split 'Schedule:')[0] -split
+        [environment]::NewLine).Trim()).
+        # this gets rid of blank items
+        Where({$_})
+
+    [PSCustomObject]@{
+        Email = $Email
+        Email1 = $Email1 -join '; '
+        }
+    }
+
+$Results
+
+$Results |
+    Export-Csv -LiteralPath "$home\Desktop\PowerShell\PSWritePDF\R6.csv" -NoTypeInformation
+
+
+
